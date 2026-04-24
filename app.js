@@ -34,10 +34,13 @@ async function handleRegister() {
 }
 
 // 处理下载按钮点击
-function handleDownload(platform) {
-    // 如果没有指定平台，跳转到注册页面（根据地区选择链接）
+async function handleDownload(platform) {
+    // 如果没有指定平台，根据地区跳转到对应的下载链接
     if (!platform) {
-        handleRegister();
+        const region = cachedRegion || await getUserRegion();
+        // 国内用户使用国内下载链接，海外用户使用海外下载链接
+        const link = region === 'mainland' ? 'https://www.bsmkweb.cc/en/download' : 'https://www.binance.com/en/download';
+        window.open(link, '_blank');
         return;
     }
     const link = CONFIG.downloads[platform] || CONFIG.downloads.android;
