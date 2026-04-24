@@ -1,19 +1,29 @@
-// 获取用户地区
+// 获取用户地区 - 使用多个备选服务
 async function getUserRegion() {
+    // 首先尝试从时区判断（最可靠，不依赖网络）
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (timezone === 'Asia/Shanghai' || timezone === 'Asia/Hong_Kong' || timezone === 'Asia/Taipei') {
+        return 'mainland';
+    }
+    
+    // 其次尝试从语言判断
+    const lang = navigator.language || navigator.userLanguage;
+    if (lang === 'zh-CN') {
+        return 'mainland';
+    }
+    
+    // 最后尝试 IP 检测
     try {
-        // 尝试通过 IP 判断地区
-        const response = await fetch('https://ipapi.co/json/');
+        const response = await fetch('https://ipapi.co/json/', { timeout: 3000 });
         const data = await response.json();
-        
-        // 如果是中国，返回 mainland，否则返回 overseas
         if (data.country_code === 'CN') {
             return 'mainland';
         }
-        return 'overseas';
     } catch (error) {
-        console.log('无法获取地区信息，默认使用海外链接');
-        return 'overseas';
+        console.log('IP检测失败，使用时区/语言判断结果');
     }
+    
+    return 'overseas';
 }
 
 // 处理注册按钮点击
@@ -25,9 +35,21 @@ async function handleRegister() {
 
 // 处理下载按钮点击
 function handleDownload(platform) {
+    // 如果没有指定平台，跳转到注册页面（根据地区选择链接）
+    if (!platform) {
+        handleRegister();
+        return;
+    }
     const link = CONFIG.downloads[platform] || CONFIG.downloads.android;
     window.open(link, '_blank');
 }
+
+// 页面加载时预检测地区（提前获取，点击时更快）
+let cachedRegion = null;
+getUserRegion().then(region => {
+    cachedRegion = region;
+    console.log('Detected region:', region);
+});
 
 // 语言切换
 let currentLang = localStorage.getItem('lang') || CONFIG.defaultLanguage;
