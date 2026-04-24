@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Binance Landing</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .admin-container {
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 40px;
+            background: var(--binance-darker);
+            border: 1px solid var(--binance-gray);
+            border-radius: 8px;
+        }
+        
+        .admin-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--binance-yellow);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--binance-light);
+            font-size: 14px;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            background: var(--binance-dark);
+            border: 1px solid var(--binance-gray);
+            border-radius: 4px;
+            color: var(--binance-white);
+            font-size: 14px;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--binance-yellow);
+        }
+        
+        .btn-save {
+            width: 100%;
+            padding: 14px;
+            background: var(--binance-yellow);
+            color: var(--binance-dark);
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-save:hover {
+            background: #F8D12F;
+        }
+        
+        .login-form {
+            display: block;
+        }
+        
+        .config-form {
+            display: none;
+        }
+        
+        .success-msg {
+            color: #0ECB81;
+            text-align: center;
+            margin-top: 16px;
+            display: none;
+        }
+        
+        .error-msg {
+            color: #F6465D;
+            text-align: center;
+            margin-top: 16px;
+            display: none;
+        }
+        
+        .section-title {
+            color: var(--binance-white);
+            font-size: 18px;
+            margin: 30px 0 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--binance-gray);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span>BINANCE</span>
+                <span style="color: var(--binance-light); font-size: 14px; margin-left: 10px;">Admin Panel</span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="admin-container">
+        <!-- 登录表单 -->
+        <div id="loginForm" class="login-form">
+            <h2 class="admin-title">管理员登录</h2>
+            <div class="form-group">
+                <label>密码</label>
+                <input type="password" id="password" placeholder="请输入管理员密码">
+            </div>
+            <button class="btn-save" onclick="login()">登录</button>
+            <p id="loginError" class="error-msg">密码错误</p>
+        </div>
+
+        <!-- 配置表单 -->
+        <div id="configForm" class="config-form">
+            <h2 class="admin-title">链接配置</h2>
+            
+            <div class="section-title">注册链接</div>
+            <div class="form-group">
+                <label>海外用户链接</label>
+                <input type="text" id="overseasLink" placeholder="https://www.binance.com/join?ref=VIPBN">
+            </div>
+            <div class="form-group">
+                <label>大陆用户链接</label>
+                <input type="text" id="mainlandLink" placeholder="https://www.bsmkweb.cc/join?ref=VIPBN">
+            </div>
+
+            <div class="section-title">下载链接</div>
+            <div class="form-group">
+                <label>iOS 下载链接</label>
+                <input type="text" id="iosLink" placeholder="iOS下载链接">
+            </div>
+            <div class="form-group">
+                <label>Android 下载链接</label>
+                <input type="text" id="androidLink" placeholder="Android下载链接">
+            </div>
+
+            <button class="btn-save" onclick="saveConfig()">保存配置</button>
+            <p id="successMsg" class="success-msg">保存成功！</p>
+            
+            <div style="margin-top: 30px; text-align: center;">
+                <a href="index.html" style="color: var(--binance-yellow); text-decoration: none;">返回首页</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script>
+        // 检查是否已登录
+        if (localStorage.getItem('adminLoggedIn') === 'true') {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('configForm').style.display = 'block';
+            loadConfig();
+        }
+
+        function login() {
+            const password = document.getElementById('password').value;
+            if (password === CONFIG.adminPassword) {
+                localStorage.setItem('adminLoggedIn', 'true');
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('configForm').style.display = 'block';
+                loadConfig();
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+            }
+        }
+
+        function loadConfig() {
+            document.getElementById('overseasLink').value = CONFIG.links.overseas;
+            document.getElementById('mainlandLink').value = CONFIG.links.mainland;
+            document.getElementById('iosLink').value = CONFIG.downloads.ios;
+            document.getElementById('androidLink').value = CONFIG.downloads.android;
+        }
+
+        function saveConfig() {
+            // 这里只是前端演示，实际部署时需要后端支持
+            // 或者可以生成新的 config.js 文件供下载
+            
+            const newConfig = {
+                links: {
+                    overseas: document.getElementById('overseasLink').value,
+                    mainland: document.getElementById('mainlandLink').value
+                },
+                downloads: {
+                    ios: document.getElementById('iosLink').value,
+                    android: document.getElementById('androidLink').value,
+                    windows: CONFIG.downloads.windows,
+                    mac: CONFIG.downloads.mac
+                },
+                adminPassword: CONFIG.adminPassword,
+                defaultLanguage: CONFIG.defaultLanguage
+            };
+
+            // 生成新的 config.js 内容
+            const configContent = `// 配置文件
+const CONFIG = ${JSON.stringify(newConfig, null, 4)};
+
+// 多语言配置
+const I18N = ${JSON.stringify(I18N, null, 4)};`;
+
+            // 下载配置文件
+            const blob = new Blob([configContent], { type: 'text/javascript' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'config.js';
+            a.click();
+            URL.revokeObjectURL(url);
+
+            document.getElementById('successMsg').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('successMsg').style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

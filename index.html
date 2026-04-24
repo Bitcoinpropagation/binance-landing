@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binance - 全球领先的数字资产交易平台</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span>BINANCE</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features" data-i18n="features">功能</a>
+
+                <a href="#support" data-i18n="support">支持</a>
+            </div>
+            <div class="nav-actions">
+                <button class="lang-switch" onclick="toggleLanguage()">
+                    <span id="lang-text">English</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 data-i18n="hero_title">全球领先的数字资产交易平台</h1>
+            <p data-i18n="hero_subtitle">安全、快捷、专业的加密货币交易服务</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn-primary" onclick="handleRegister()" data-i18n="start_now">立即开始</a>
+                <a href="#" class="btn-secondary" onclick="handleRegister()" data-i18n="register_now">立即注册</a>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">200+</span>
+                    <span class="stat-label" data-i18n="countries">国家/地区</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">1.5亿+</span>
+                    <span class="stat-label" data-i18n="users">注册用户</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">600+</span>
+                    <span class="stat-label" data-i18n="cryptos">加密货币</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2 data-i18n="why_binance">为什么选择 Binance</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3 data-i18n="security">安全可靠</h3>
+                    <p data-i18n="security_desc">多重安全机制，保障您的资产安全</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 data-i18n="fast">极速交易</h3>
+                    <p data-i18n="fast_desc">毫秒级撮合引擎，交易无延迟</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3 data-i18n="low_fees">低手续费</h3>
+                    <p data-i18n="low_fees_desc">行业最低交易费率，BNB额外折扣</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3 data-i18n="multi_platform">多平台支持</h3>
+                    <p data-i18n="multi_platform_desc">随时随地，多端同步交易</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span>BINANCE</span>
+                </div>
+                <p class="footer-text" data-i18n="footer_text">© 2024 Binance. 全球领先的数字资产交易平台</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

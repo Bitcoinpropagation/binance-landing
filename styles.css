@@ -1,0 +1,403 @@
+:root {
+    --binance-yellow: #F0B90B;
+    --binance-dark: #0B0E11;
+    --binance-darker: #1A1D23;
+    --binance-gray: #474D57;
+    --binance-light: #848E9C;
+    --binance-white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--binance-dark);
+    color: var(--binance-white);
+    line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(11, 14, 17, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--binance-gray);
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo svg {
+    width: 30px;
+    height: 30px;
+}
+
+.logo span {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--binance-yellow);
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    color: var(--binance-light);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--binance-white);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.lang-switch {
+    background: transparent;
+    border: 1px solid var(--binance-gray);
+    color: var(--binance-light);
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.lang-switch:hover {
+    border-color: var(--binance-yellow);
+    color: var(--binance-yellow);
+}
+
+.btn-login {
+    color: var(--binance-light);
+    text-decoration: none;
+    font-size: 14px;
+    padding: 8px 16px;
+}
+
+.btn-register {
+    background: var(--binance-yellow);
+    color: var(--binance-dark);
+    text-decoration: none;
+    padding: 10px 24px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-register:hover {
+    background: #F8D12F;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 20px 60px;
+    background: linear-gradient(135deg, var(--binance-dark) 0%, #151A21 50%, var(--binance-dark) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(240, 185, 11, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: 56px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, var(--binance-white) 0%, var(--binance-yellow) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero p {
+    font-size: 20px;
+    color: var(--binance-light);
+    margin-bottom: 40px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+.btn-primary {
+    background: var(--binance-yellow);
+    color: var(--binance-dark);
+    text-decoration: none;
+    padding: 16px 40px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background: #F8D12F;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--binance-white);
+    text-decoration: none;
+    padding: 16px 40px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    border: 1px solid var(--binance-gray);
+    transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+    border-color: var(--binance-yellow);
+    color: var(--binance-yellow);
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--binance-yellow);
+}
+
+.stat-label {
+    font-size: 14px;
+    color: var(--binance-light);
+}
+
+/* Features Section */
+.features {
+    padding: 100px 20px;
+    background: var(--binance-darker);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.features h2 {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 60px;
+    color: var(--binance-white);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background: var(--binance-dark);
+    border: 1px solid var(--binance-gray);
+    border-radius: 8px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.feature-card:hover {
+    border-color: var(--binance-yellow);
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: var(--binance-white);
+}
+
+.feature-card p {
+    color: var(--binance-light);
+    font-size: 14px;
+}
+
+/* Download Section */
+.download {
+    padding: 100px 20px;
+    background: var(--binance-dark);
+}
+
+.download h2 {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 16px;
+    color: var(--binance-white);
+}
+
+.download-subtitle {
+    text-align: center;
+    color: var(--binance-light);
+    margin-bottom: 60px;
+    font-size: 18px;
+}
+
+.download-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.download-card {
+    background: var(--binance-darker);
+    border: 1px solid var(--binance-gray);
+    border-radius: 8px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.download-card:hover {
+    border-color: var(--binance-yellow);
+    background: rgba(240, 185, 11, 0.05);
+}
+
+.download-icon {
+    font-size: 32px;
+}
+
+.download-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.download-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--binance-white);
+}
+
+.download-name {
+    font-size: 13px;
+    color: var(--binance-light);
+}
+
+/* Footer */
+.footer {
+    background: var(--binance-darker);
+    border-top: 1px solid var(--binance-gray);
+    padding: 40px 20px;
+}
+
+.footer-content {
+    text-align: center;
+}
+
+.footer-logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--binance-yellow);
+    margin-bottom: 16px;
+    letter-spacing: 2px;
+}
+
+.footer-text {
+    color: var(--binance-light);
+    font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .hero h1 {
+        font-size: 36px;
+    }
+    
+    .hero p {
+        font-size: 16px;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .stats {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .features h2,
+    .download h2 {
+        font-size: 28px;
+    }
+}
