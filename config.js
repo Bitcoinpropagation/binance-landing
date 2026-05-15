@@ -5,7 +5,7 @@ const CONFIG = {
         // 海外用户链接
         overseas: 'https://www.binance.com/join?ref=VIPBN',
         // 大陆用户链接
-        mainland: 'https://www.bsmkweb.cc/join?ref=VIPBN'
+        mainland: 'https://www.iruabmkakw.com/zh-CN/join?ref=VIPBN'
     },
     
     // 下载链接配置
