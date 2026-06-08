@@ -3,9 +3,9 @@ const CONFIG = {
     // 注册链接配置
     links: {
         // 海外用户链接
-        overseas: 'https://www.binance.com/join?ref=VIPBN',
+        overseas: 'https://www.usnbweb.mobi/zh-CN/join?ref=VIPBN',
         // 大陆用户链接
-        mainland: 'https://www.iruabmkakw.com/zh-CN/join?ref=VIPBN'
+        mainland: 'https://www.usnbweb.mobi/zh-CN/join?ref=VIPBN'
     },
     
     // 下载链接配置
