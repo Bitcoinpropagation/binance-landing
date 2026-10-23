@@ -3,9 +3,11 @@ const CONFIG = {
     // 注册链接配置
     links: {
         // 海外用户链接
-        overseas: 'https://www.bsmkweb.cc/zh-CN/join?ref=VIPBN',
-        // 大陆用户链接
-        mainland: 'https://www.binance.com/zh-CN/join?ref=VIPBN'
+        overseas: 'https://www.binance.com/zh-CN/join?ref=VIPBN',
+        // 华语区主链接
+        mainland: 'https://www.bsmkweb.cc/zh-CN/join?ref=VIPBN',
+        // 华语区备用链接
+        mainlandBackup: 'https://www.bscdnweb.net/zh-CN/join?ref=VIPBN'
     },
     
     // 下载链接配置
